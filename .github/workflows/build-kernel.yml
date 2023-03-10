@@ -53,7 +53,7 @@ jobs:
 
     - name: Download Toolchain (Azure Clang)
       run: |
-        cd cd $GITHUB_WORKSPACE/kernel_workspace
+        cd $GITHUB_WORKSPACE/kernel_workspace
         git clone https://gitlab.com/Panchajanya1999/azure-clang.git toolchain --depth 1
 
     - name: Download mkbootimg tools
