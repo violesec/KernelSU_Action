@@ -101,8 +101,10 @@ jobs:
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
         export PATH=$GITHUB_WORKSPACE/kernel_workspace/clang-aosp/bin:$GITHUB_WORKSPACE/kernel_workspace/aosp-clang32/bin:$PATH
         echo $PATH
-        export KBUILD_BUILD_HOST=$ {{  env.KBUILD_BUILD_HOST }} # Default: Github-action
-        export KBUILD_BUILD_USER=$ {{  env.KBUILD_BUILD_USER }} # $(echo ${{ github.actor }} | tr A-Z a-z)
+        # export KBUILD_BUILD_HOST=$ {{  env.KBUILD_BUILD_HOST }} # Default: Github-action
+        # export KBUILD_BUILD_USER=$ {{  env.KBUILD_BUILD_USER }} # $(echo ${{ github.actor }} | tr A-Z a-z)
+        export KBUILD_BUILD_HOST=ArchLinux
+        export KBUILD_BUILD_USER=Viole403
         make -j$(nproc --all) O=out ARCH=${{ env.TARGET_ARCH }} CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=$GITHUB_WORKSPACE/kernel_workspace/gcc-aosp/bin/aarch64-linux-android- CROSS_COMPILE_ARM32=$GITHUB_WORKSPACE/kernel_workspace/gcc-aosp32/bin/arm-linux-gnueabi- CC=clang ${{ env.BUILD_EXTRA_COMMAND }} ${{ env.KERNEL_DEFCONFIG }}
         make -j$(nproc --all) O=out ARCH=${{ env.TARGET_ARCH }} CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=$GITHUB_WORKSPACE/kernel_workspace/gcc-aosp/bin/aarch64-linux-android- CROSS_COMPILE_ARM32=$GITHUB_WORKSPACE/kernel_workspace/gcc-aosp32/bin/arm-linux-gnueabi- CC=clang ${{ env.BUILD_EXTRA_COMMAND }}
 
